@@ -1,0 +1,33 @@
+
+
+public class Main{
+ public static void main(String[] args){
+
+          // 문제1. 입력된 수의 각 자릿수 합 구하기
+	int inputNum = 1232;
+	int accSum = 0;
+
+	// 1232 => 123 => 12 => 1
+	//  2             3        2       1 => 8
+	
+	while(inputNum > 0){
+	  accSum += inputNum % 10;
+	  inputNum /= 10;
+	}
+	System.out.println(accSum);
+
+           //문제2. 입력된 수 만큼 N행 N열의 형태로 연속으로 출력되는 숫자 사각형 출력
+	
+	int n = 5;
+	
+	for(int i=0;i<n;i++){
+                 for(int j=0;j<n;j++){
+                    System.out.printf("%4d",i*(n)+i+1); 
+                 }
+	 System.out.println();
+	}
+		
+
+}
+
+}
