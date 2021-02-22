@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class Baekjoon {
+
+public static void main(String[] args) {
+
+//문제1.
+Scanner sc = new Scanner(System.in);
+int X = sc.nextInt();
+
+int cross_count = 1, prev_count_sum = 0;
+
+while(true) {
+// 직전 대각선 누적합+ 해당 대각선 개수 이용한 범위 판별
+
+if(X<=prev_count_sum + cross_count) {
+
+if(cross_count%2==1) {  //대각선의 개수가 홀수라면
+//분모가 큰 수부터 시작
+//분모는 대각선 개수 - (x번째 - 직전 대각선까지의 누적합 -1)
+//분자는 x번째 - 직전 대각선까지의 누적합
+System.out.print((cross_count-(X-prev_count_sum-1))+"/"+(X-prev_count_sum));
+break;
+}else {
+System.out.print((X-prev_count_sum)+"/"+(cross_count-(X-prev_count_sum-1)));
+break;
+}
+}else {
+prev_count_sum += cross_count;
+cross_count++;
+}
+}
+
+
+//문제2. 달팽이나무 올라가는 알고리즘
+
+/* 높이가 V미터인 나무 막대를 달팽이가 올라간다.
+* 달팽이가 낮에는 A미터 올라가지만,
+* 밤에는 B미터만큼 미끄러진다. 그러나 정상에 올라간 후에는 미끄러지지 않는다.
+* 달팽이가 나무 막대를 모두 올라가려면, 며칠이 걸리는지 구하기
+*
+* */
+int up = sc.nextInt();
+int down = sc.nextInt();
+int length = sc.nextInt();
+
+int day = (length-down)/(up-down);
+
+//나머지가 있을 경우(정상이 아닌 블럭이 있을 경우 밤에 떨어지기 때문에 +1해야 함.)
+if((length-down)%(up-down)!=0) {
+day++;
+}
+System.out.println(day);
+
+}
+
+}
